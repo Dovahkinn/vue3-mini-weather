@@ -9,3 +9,4 @@ declare module '@dovak/vue3-mini-weather-next' {
   }
   export default install
 }
+

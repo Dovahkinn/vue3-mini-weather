@@ -2,7 +2,7 @@
 
 > 作者不维护了，因此单独拉个分支出来
 
-#### 📦 安装
+## 📦 安装
 
 ```bash
 npm i @dovak/vue3-mini-weather-next --save
@@ -14,7 +14,7 @@ npm i @dovak/vue3-mini-weather-next --save
 //main.js 项目入口文件
 import { createApp } from 'vue'
 import App from './App.vue'
-import weather from 'vue3-mini-weather'
+import weather from ' @dovak/vue3-mini-weather'
 
 createApp(App).use(weather).mount('#app')
 
@@ -50,13 +50,13 @@ import { vMiniWeather, vMiniWeatherIcon } from '@dovak/vue3-mini-weather-next'
 
 ```
 
-#### 📝 参数说明
+## 📝 参数说明
 ```javascript
 // v-mini-weather参数
 
 url: {     // 天气小组件调用的天气查询API
   type: String,
-  default: 'https://apia.aidioute.cn/weather/'
+  default: ''
 },
 
 // 自定义请求，可用于模拟数据、格式化接口参数等
@@ -77,6 +77,16 @@ type: {     // 天气图标类型 -- fill / line
 }
 ```
 
-#### CHANGELOG
-* **v0.0.1**
-1. 增加自定义请求属性 `customRequest`
+## CHANGELOG
+### 0.0.2
+#### Fixes
+- TS 类型声明
+- 增加响应过滤器属性：resultAdapter
+- 增加心知天气图标：`x32` ~ `x38`
+
+#### Features
+- 
+
+### 0.0.1
+#### Features
+ - 增加自定义请求属性 `customRequest`

@@ -1,4 +1,4 @@
-import install, { vMiniWeather, vMiniWeatherIcon } from "./npm/index.js";
+import install, { vMiniWeather, vMiniWeatherIcon } from "./src/lib/index.ts";
 
 export default install;
 export { vMiniWeather, vMiniWeatherIcon };
