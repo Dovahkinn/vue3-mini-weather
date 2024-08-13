@@ -13,4 +13,3 @@ export {
     vMiniWeatherIcon
 }
 
-console.log('weather install ts...')
