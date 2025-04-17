@@ -39,7 +39,7 @@ const latitude = ref("");
 const longitude = ref("");
 
 
-const updateLocation = throttle(function(position: GeolocationPosition){
+const updateLocation = throttle(function (position: GeolocationPosition) {
   if (
     latitude.value != position.coords.latitude ||
     longitude.value != position.coords.longitude
@@ -59,6 +59,7 @@ if (typeof window !== "undefined" && window.navigator.geolocation) {
   window.navigator.geolocation.getCurrentPosition(
     updateLocation,
     (error) => {
+      handleGetWeather();
       switch (error.code) {
         case 0:
           handleSendError({
@@ -116,9 +117,9 @@ const handleUpdate = () => {
 };
 const handleGetWeather = throttle(async () => {
   const defaultQuery = latitude.value && longitude.value
-  ? `location_type=1&lat=${latitude.value}&lng=${longitude.value}&from=vmweather`
-  : `location_type=0&from=vmweather`
-  
+    ? `location_type=1&lat=${latitude.value}&lng=${longitude.value}&from=vmweather`
+    : `location_type=0&from=vmweather`
+
   const url = props.url?.includes("?")
     ? `${props.url}&${defaultQuery}`
     : `${props.url}?${defaultQuery}`;
@@ -160,12 +161,12 @@ const handleGetWeather = throttle(async () => {
         weatherData.value = result.data.weather;
         weathercode.value = result.data.weather.weathercode;
         updating.value = false;
-      } 
+      }
       else {
         // 请求成功，但数据格式不符合预期
         updating.value = false;
         console.warn("获取天气请求成功: 数据格式不符合预期，请提供适配器 【resultAdapter】");
-        
+
         if (props.resultAdapter) {
           const adapterResult = props.resultAdapter(result);
           console.log('adapterResult: ', adapterResult)
@@ -222,13 +223,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div
-    class="v-weather"
-    @click="handleUpdate"
-    :style="`cursor: ${
-      updating ? 'not-allowed' : 'pointer'
-    }; user-select: none;`"
-  >
+  <div class="v-weather" @click="handleUpdate" :style="`cursor: ${updating ? 'not-allowed' : 'pointer'
+    }; user-select: none;`">
     <span v-if="updating">更新中...</span>
     <slot v-if="!updating" :weather="weatherData" :icon="weathercode"></slot>
   </div>
